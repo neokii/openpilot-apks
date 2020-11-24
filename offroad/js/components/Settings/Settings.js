@@ -634,6 +634,7 @@ class Settings extends Component {
                 LongControlEnabled: longControlEnabled,
                 MadModeEnabled: madModeEnabled,
                 AutoLaneChangeEnabled: autoLaneChangeEnabled,
+                SccSmootherEnabled: sccSmootherEnabled
             },
         } = this.props;
         const { expandedCell } = this.state;
@@ -697,6 +698,17 @@ class Settings extends Component {
                                     isExpanded={ expandedCell == 'autoLaneChange_enabled' }
                                     handleExpanded={ () => this.handleExpanded('autoLaneChange_enabled') }
                                     handleChanged={ this.props.setAutoLaneChangeEnabled } />
+                            ) : null }
+                            { !parseInt(isPassive) && !!parseInt(communityFeatures) && !parseInt(longControlEnabled) ? (
+                                <X.TableCell
+                                    type='switch'
+                                    title='Enable SCC Smoother'
+                                    value={ !!parseInt(sccSmootherEnabled) }
+                                    iconSource={ Icons.openpilot }
+                                    description='Warnings: Use at your own risk !!, Adjusts the maximum set speed to assist a little smooth acceleration/deceleration. When this mode is activated, you can switch to stock mode using the CANCEL button on the vehicle steer button.'
+                                    isExpanded={ expandedCell == 'sccSmoother_enabled' }
+                                    handleExpanded={ () => this.handleExpanded('sccSmoother_enabled') }
+                                    handleChanged={ this.props.setSccSmootherEnabled } />
                             ) : null }
                         <X.TableCell
                             type='switch'
@@ -990,6 +1002,7 @@ const mapDispatchToProps = dispatch => ({
         dispatch(updateParam(Params.KEY_LONG_CONTROL_ENABLED, (longControlEnabled | 0).toString()));
         if (longControlEnabled == 1) {
           dispatch(updateParam(Params.KEY_MAD_MODE_ENABLED, (0).toString()));
+          dispatch(updateParam(Params.KEY_SCC_SMOOTHER_ENABLED, (0).toString()));
         }
     },
     setMadModeEnabled: (madModeEnabled) => {
@@ -997,6 +1010,9 @@ const mapDispatchToProps = dispatch => ({
     },
     setAutoLaneChangeEnabled: (autoLaneChangeEnabled) => {
         dispatch(updateParam(Params.KEY_AUTO_LANE_CHANGE_ENABLED, (autoLaneChangeEnabled | 0).toString()));
+    },
+    setSccSmootherEnabled: (sccSmootherEnabled) => {
+        dispatch(updateParam(Params.KEY_SCC_SMOOTHER_ENABLED, (sccSmootherEnabled | 0).toString()));
     },
     deleteParam: (param) => {
         dispatch(deleteParam(param));

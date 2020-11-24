@@ -42,4 +42,5 @@ export const Params = {
     KEY_LONG_CONTROL_ENABLED: 'LongControlEnabled',
     KEY_MAD_MODE_ENABLED: 'MadModeEnabled',
     KEY_AUTO_LANE_CHANGE_ENABLED: 'AutoLaneChangeEnabled',
+    KEY_SCC_SMOOTHER_ENABLED: 'SccSmootherEnabled',
 };
