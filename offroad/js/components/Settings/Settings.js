@@ -705,7 +705,7 @@ class Settings extends Component {
                                     title='Enable SCC Smoother'
                                     value={ !!parseInt(sccSmootherEnabled) }
                                     iconSource={ Icons.openpilot }
-                                    description='Warnings: Use at your own risk !!, Adjusts the maximum set speed to assist a little smooth acceleration/deceleration. When this mode is activated, you can switch to stock mode using the CANCEL button on the vehicle steer button.'
+                                    description='WARNING: Use at your own risk !!, Adjusts the maximum set speed to assist a little smooth acceleration/deceleration. When this mode is activated, you can switch to stock mode using the CANCEL button on the vehicle steer button.'
                                     isExpanded={ expandedCell == 'sccSmoother_enabled' }
                                     handleExpanded={ () => this.handleExpanded('sccSmoother_enabled') }
                                     handleChanged={ this.props.setSccSmootherEnabled } />
