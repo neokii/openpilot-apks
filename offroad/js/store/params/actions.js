@@ -48,7 +48,7 @@ const PARAMS = [
   "MadModeEnabled",
   "AutoLaneChangeEnabled",
   "IsRHD",
-  "SccSmootherEnabled"
+  "SccSmootherEnabled",
   "SccSmootherSlowOnCurves"
 ].concat(ALERT_PARAMS);
 
