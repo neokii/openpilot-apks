@@ -634,7 +634,7 @@ class Settings extends Component {
                 LongControlEnabled: longControlEnabled,
                 MadModeEnabled: madModeEnabled,
                 AutoLaneChangeEnabled: autoLaneChangeEnabled,
-                SccSmootherEnabled: sccSmootherEnabled
+                SccSmootherEnabled: sccSmootherEnabled,
                 SccSmootherSlowOnCurves: sccSmootherSlowOnCurves
             },
         } = this.props;
