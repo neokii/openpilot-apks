@@ -43,4 +43,5 @@ export const Params = {
     KEY_MAD_MODE_ENABLED: 'MadModeEnabled',
     KEY_AUTO_LANE_CHANGE_ENABLED: 'AutoLaneChangeEnabled',
     KEY_SCC_SMOOTHER_ENABLED: 'SccSmootherEnabled',
+    KEY_SCC_SMOOTHER_SLOW_ON_CURVES: 'SccSmootherSlowOnCurves',
 };

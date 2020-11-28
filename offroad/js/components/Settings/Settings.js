@@ -635,6 +635,7 @@ class Settings extends Component {
                 MadModeEnabled: madModeEnabled,
                 AutoLaneChangeEnabled: autoLaneChangeEnabled,
                 SccSmootherEnabled: sccSmootherEnabled
+                SccSmootherSlowOnCurves: sccSmootherSlowOnCurves
             },
         } = this.props;
         const { expandedCell } = this.state;
@@ -709,6 +710,17 @@ class Settings extends Component {
                                     isExpanded={ expandedCell == 'sccSmoother_enabled' }
                                     handleExpanded={ () => this.handleExpanded('sccSmoother_enabled') }
                                     handleChanged={ this.props.setSccSmootherEnabled } />
+                            ) : null }
+                            { !parseInt(isPassive) && !!parseInt(communityFeatures) && !parseInt(longControlEnabled) && parseInt(sccSmootherEnabled) ? (
+                                <X.TableCell
+                                    type='switch'
+                                    title='Enable Slow On Curves'
+                                    value={ !!parseInt(sccSmootherSlowOnCurves) }
+                                    iconSource={ Icons.openpilot }
+                                    description=''
+                                    isExpanded={ expandedCell == 'sccSmootherSlowOnCurves_enabled' }
+                                    handleExpanded={ () => this.handleExpanded('sccSmootherSlowOnCurves_enabled') }
+                                    handleChanged={ this.props.setSccSmootherSlowOnCurves } />
                             ) : null }
                         <X.TableCell
                             type='switch'
@@ -1013,6 +1025,9 @@ const mapDispatchToProps = dispatch => ({
     },
     setSccSmootherEnabled: (sccSmootherEnabled) => {
         dispatch(updateParam(Params.KEY_SCC_SMOOTHER_ENABLED, (sccSmootherEnabled | 0).toString()));
+    },
+    setSccSmootherSlowOnCurves: (sccSmootherSlowOnCurves) => {
+        dispatch(updateParam(Params.KEY_SCC_SMOOTHER_SLOW_ON_CURVES, (sccSmootherSlowOnCurves | 0).toString()));
     },
     deleteParam: (param) => {
         dispatch(deleteParam(param));
