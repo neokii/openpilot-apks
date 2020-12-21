@@ -713,7 +713,7 @@ class Settings extends Component {
                                     handleExpanded={ () => this.handleExpanded('sccSmoother_enabled') }
                                     handleChanged={ this.props.setSccSmootherEnabled } />
                             ) : null }
-                            { !parseInt(isPassive) && !!parseInt(communityFeatures) && !parseInt(longControlEnabled) && parseInt(sccSmootherEnabled) ? (
+                            { !parseInt(isPassive) && !!parseInt(communityFeatures) && !parseInt(longControlEnabled) && !!parseInt(sccSmootherEnabled) ? (
                                 <X.TableCell
                                     type='switch'
                                     title='Enable Slow On Curves'
@@ -724,7 +724,7 @@ class Settings extends Component {
                                     handleExpanded={ () => this.handleExpanded('sccSmootherSlowOnCurves_enabled') }
                                     handleChanged={ this.props.setSccSmootherSlowOnCurves } />
                             ) : null }
-                            { !parseInt(isPassive) && !!parseInt(communityFeatures) && !parseInt(longControlEnabled) && parseInt(sccSmootherEnabled) ? (
+                            { !parseInt(isPassive) && !!parseInt(communityFeatures) && !parseInt(longControlEnabled) && !!parseInt(sccSmootherEnabled) ? (
                                 <X.TableCell
                                     type='switch'
                                     title='Sync set speed on gas pressed'
@@ -735,13 +735,13 @@ class Settings extends Component {
                                     handleExpanded={ () => this.handleExpanded('sccSmootherSyncGasPressed_enabled') }
                                     handleChanged={ this.props.setSccSmootherSyncGasPressed } />
                             ) : null }
-                            { !parseInt(isPassive) && !!parseInt(communityFeatures) && !parseInt(longControlEnabled) && parseInt(sccSmootherEnabled) ? (
+                            { !parseInt(isPassive) && !!parseInt(communityFeatures) && !parseInt(longControlEnabled) && !!parseInt(sccSmootherEnabled) ? (
                                 <X.TableCell
                                     type='switch'
                                     title='Switch only with cruise gap button'
                                     value={ !!parseInt(sccSmootherSwitchGapOnly) }
                                     iconSource={ Icons.openpilot }
-                                    description=''
+                                    description='The CANCEL or GAP button is used to switch with the stock scc. When this option is activated, only the GAP button is used.'
                                     isExpanded={ expandedCell == 'sccSmootherSwitchGapOnly_enabled' }
                                     handleExpanded={ () => this.handleExpanded('sccSmootherSwitchGapOnly_enabled') }
                                     handleChanged={ this.props.setSccSmootherSwitchGapOnly } />
