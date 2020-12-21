@@ -636,6 +636,8 @@ class Settings extends Component {
                 AutoLaneChangeEnabled: autoLaneChangeEnabled,
                 SccSmootherEnabled: sccSmootherEnabled,
                 SccSmootherSlowOnCurves: sccSmootherSlowOnCurves
+                SccSmootherSyncGasPressed: sccSmootherSyncGasPressed
+                SccSmootherSwitchGapOnly: sccSmootherSwitchGapOnly
             },
         } = this.props;
         const { expandedCell } = this.state;
@@ -706,7 +708,7 @@ class Settings extends Component {
                                     title='Enable SCC Smoother'
                                     value={ !!parseInt(sccSmootherEnabled) }
                                     iconSource={ Icons.openpilot }
-                                    description='WARNING: Use at your own risk !!, It automatically adjusts the maximum set speed to help with slight smooth acceleration/deceleration. When this mode is activated, you can switch to stock mode using the CANCEL button on the vehicle steering wheel.'
+                                    description='WARNING: Use at your own risk !!, It automatically adjusts the maximum set speed to help with slight smooth acceleration/deceleration. When this mode is activated, you can switch to stock mode using the CANCEL or GAP button on the vehicle steering wheel.'
                                     isExpanded={ expandedCell == 'sccSmoother_enabled' }
                                     handleExpanded={ () => this.handleExpanded('sccSmoother_enabled') }
                                     handleChanged={ this.props.setSccSmootherEnabled } />
@@ -721,6 +723,28 @@ class Settings extends Component {
                                     isExpanded={ expandedCell == 'sccSmootherSlowOnCurves_enabled' }
                                     handleExpanded={ () => this.handleExpanded('sccSmootherSlowOnCurves_enabled') }
                                     handleChanged={ this.props.setSccSmootherSlowOnCurves } />
+                            ) : null }
+                            { !parseInt(isPassive) && !!parseInt(communityFeatures) && !parseInt(longControlEnabled) && parseInt(sccSmootherEnabled) ? (
+                                <X.TableCell
+                                    type='switch'
+                                    title='Sync set speed on gas pressed'
+                                    value={ !!parseInt(sccSmootherSyncGasPressed) }
+                                    iconSource={ Icons.openpilot }
+                                    description=''
+                                    isExpanded={ expandedCell == 'sccSmootherSyncGasPressed_enabled' }
+                                    handleExpanded={ () => this.handleExpanded('sccSmootherSyncGasPressed_enabled') }
+                                    handleChanged={ this.props.setSccSmootherSyncGasPressed } />
+                            ) : null }
+                            { !parseInt(isPassive) && !!parseInt(communityFeatures) && !parseInt(longControlEnabled) && parseInt(sccSmootherEnabled) ? (
+                                <X.TableCell
+                                    type='switch'
+                                    title='Switch only with cruise gap button'
+                                    value={ !!parseInt(sccSmootherSwitchGapOnly) }
+                                    iconSource={ Icons.openpilot }
+                                    description=''
+                                    isExpanded={ expandedCell == 'sccSmootherSwitchGapOnly_enabled' }
+                                    handleExpanded={ () => this.handleExpanded('sccSmootherSwitchGapOnly_enabled') }
+                                    handleChanged={ this.props.setSccSmootherSwitchGapOnly } />
                             ) : null }
                         <X.TableCell
                             type='switch'
@@ -1028,6 +1052,12 @@ const mapDispatchToProps = dispatch => ({
     },
     setSccSmootherSlowOnCurves: (sccSmootherSlowOnCurves) => {
         dispatch(updateParam(Params.KEY_SCC_SMOOTHER_SLOW_ON_CURVES, (sccSmootherSlowOnCurves | 0).toString()));
+    },
+    setSccSmootherSyncGasPressed: (sccSmootherSyncGasPressed) => {
+        dispatch(updateParam(Params.KEY_SCC_SMOOTHER_SYNC_GAS_PRESSED, (sccSmootherSyncGasPressed | 0).toString()));
+    },
+    setSccSmootherSwitchGapOnly: (sccSmootherSwitchGapOnly) => {
+        dispatch(updateParam(Params.KEY_SCC_SMOOTHER_SWITCH_GAP_ONLY, (sccSmootherSwitchGapOnly | 0).toString()));
     },
     deleteParam: (param) => {
         dispatch(deleteParam(param));

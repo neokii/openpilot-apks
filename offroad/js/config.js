@@ -44,4 +44,6 @@ export const Params = {
     KEY_AUTO_LANE_CHANGE_ENABLED: 'AutoLaneChangeEnabled',
     KEY_SCC_SMOOTHER_ENABLED: 'SccSmootherEnabled',
     KEY_SCC_SMOOTHER_SLOW_ON_CURVES: 'SccSmootherSlowOnCurves',
+    KEY_SCC_SMOOTHER_SYNC_GAS_PRESSED: 'SccSmootherSyncGasPressed',
+    KEY_SCC_SMOOTHER_SWITCH_GAP_ONLY: 'SccSmootherSwitchGapOnly',
 };

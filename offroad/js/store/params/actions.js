@@ -49,7 +49,9 @@ const PARAMS = [
   "AutoLaneChangeEnabled",
   "IsRHD",
   "SccSmootherEnabled",
-  "SccSmootherSlowOnCurves"
+  "SccSmootherSlowOnCurves",
+  "SccSmootherSyncGasPressed",
+  "SccSmootherSwitchGapOnly"
 ].concat(ALERT_PARAMS);
 
 export function refreshParams(params) {
