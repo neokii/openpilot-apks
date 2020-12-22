@@ -635,8 +635,8 @@ class Settings extends Component {
                 MadModeEnabled: madModeEnabled,
                 AutoLaneChangeEnabled: autoLaneChangeEnabled,
                 SccSmootherEnabled: sccSmootherEnabled,
-                SccSmootherSlowOnCurves: sccSmootherSlowOnCurves
-                SccSmootherSyncGasPressed: sccSmootherSyncGasPressed
+                SccSmootherSlowOnCurves: sccSmootherSlowOnCurves,
+                SccSmootherSyncGasPressed: sccSmootherSyncGasPressed,
                 SccSmootherSwitchGapOnly: sccSmootherSwitchGapOnly
             },
         } = this.props;
