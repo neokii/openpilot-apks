@@ -1048,7 +1048,31 @@ const mapDispatchToProps = dispatch => ({
         dispatch(updateParam(Params.KEY_AUTO_LANE_CHANGE_ENABLED, (autoLaneChangeEnabled | 0).toString()));
     },
     setSccSmootherEnabled: (sccSmootherEnabled) => {
-        dispatch(updateParam(Params.KEY_SCC_SMOOTHER_ENABLED, (sccSmootherEnabled | 0).toString()));
+
+        if(sccSmootherEnabled == 1)
+        {
+            Alert.alert(
+              "주의",
+              "SCC Smoother는 설정속도만 조절하고 최종 가감속은 순정 SCC가 담당합니다.\n이점 충분히 인지 후 사용하시기 바랍니다.\n충분히 인지하셨습니까?",
+              [
+                {
+                  text: "잘 모르겠습니다",
+                  onPress: () => dispatch(updateParam(Params.KEY_SCC_SMOOTHER_ENABLED, "0")),
+                  style: "cancel"
+                },
+                {
+                    text: "충분히 인지했습니다",
+                    onPress: () =>
+                        dispatch(updateParam(Params.KEY_SCC_SMOOTHER_ENABLED, (sccSmootherEnabled | 0).toString()))
+                },
+              ],
+              { cancelable: false }
+            );
+        }
+        else
+        {
+            dispatch(updateParam(Params.KEY_SCC_SMOOTHER_ENABLED, (sccSmootherEnabled | 0).toString()))
+        }
     },
     setSccSmootherSlowOnCurves: (sccSmootherSlowOnCurves) => {
         dispatch(updateParam(Params.KEY_SCC_SMOOTHER_SLOW_ON_CURVES, (sccSmootherSlowOnCurves | 0).toString()));
