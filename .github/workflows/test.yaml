@@ -6,8 +6,7 @@ env:
   BUILD: |
     docker pull $(grep -ioP '(?<=^from)\s+\S+' Dockerfile) || true
     docker pull docker.io/commaai/openpilot-apks:latest || true
-    #docker build --cache-from docker.io/commaai/openpilot-apks:latest -t apks -f Dockerfile .
-
+    docker build --cache-from docker.io/commaai/openpilot-apks:latest -t apks -f Dockerfile .
 jobs:
   docker_push:
     name: docker push
@@ -22,7 +21,6 @@ jobs:
           docker login -u wmelching -p ${{ secrets.COMMA_DOCKERHUB_TOKEN }}
           docker tag apks docker.io/commaai/openpilot-apks:latest
           docker push docker.io/commaai/openpilot-apks:latest
-
   offroad:
     name: offroad
     runs-on: ubuntu-16.04
@@ -31,7 +29,7 @@ jobs:
       - name: Build Docker image
         run: eval "$BUILD"
       - name: Build offroad apk
-        run: docker run --name apks docker.io/commaai/openpilot-apks /bin/sh -c "cd offroad && ./build.sh"
+        run: docker run --name apks apks /bin/sh -c "cd offroad && ./build.sh"
       - name: Copy artifacts
         run: docker cp apks:/tmp/openpilot/apks/offroad/ai.comma.plus.offroad.apk ai.comma.plus.offroad.apk
       - uses: actions/upload-artifact@v2
