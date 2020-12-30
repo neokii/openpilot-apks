@@ -6,7 +6,7 @@ env:
   BUILD: |
     docker pull $(grep -ioP '(?<=^from)\s+\S+' Dockerfile) || true
     docker pull docker.io/commaai/openpilot-apks:latest || true
-    docker build --cache-from docker.io/commaai/openpilot-apks:latest -t apks -f Dockerfile .
+    docker build -t apks -f Dockerfile .
 jobs:
   docker_push:
     name: docker push
