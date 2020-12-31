@@ -680,7 +680,7 @@ class Settings extends Component {
                                     handleExpanded={ () => this.handleExpanded('longcontrol_enabled') }
                                     handleChanged={ this.props.setLongControlEnabled } />
                             ) : null }
-                            { !parseInt(isPassive) && !!parseInt(communityFeatures) ? (
+                            { !parseInt(isPassive) && !!parseInt(communityFeatures) && !parseInt(longControlEnabled) ? (
                                 <X.TableCell
                                     type='switch'
                                     title='Enable HKG MAD mode'
