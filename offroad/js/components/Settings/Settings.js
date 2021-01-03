@@ -680,7 +680,7 @@ class Settings extends Component {
                                     handleExpanded={ () => this.handleExpanded('longcontrol_enabled') }
                                     handleChanged={ this.props.setLongControlEnabled } />
                             ) : null }
-                            { !parseInt(isPassive) && !!parseInt(communityFeatures) && !parseInt(longControlEnabled) ? (
+                            { !parseInt(isPassive) && !!parseInt(communityFeatures) ? (
                                 <X.TableCell
                                     type='switch'
                                     title='Enable HKG MAD mode'
@@ -702,7 +702,7 @@ class Settings extends Component {
                                     handleExpanded={ () => this.handleExpanded('autoLaneChange_enabled') }
                                     handleChanged={ this.props.setAutoLaneChangeEnabled } />
                             ) : null }
-                            { !parseInt(isPassive) && !!parseInt(communityFeatures) && !parseInt(longControlEnabled) ? (
+                            { !parseInt(isPassive) && !!parseInt(communityFeatures) ? (
                                 <X.TableCell
                                     type='switch'
                                     title='Enable SCC Smoother'
@@ -713,7 +713,7 @@ class Settings extends Component {
                                     handleExpanded={ () => this.handleExpanded('sccSmoother_enabled') }
                                     handleChanged={ this.props.setSccSmootherEnabled } />
                             ) : null }
-                            { !parseInt(isPassive) && !!parseInt(communityFeatures) && !parseInt(longControlEnabled) && !!parseInt(sccSmootherEnabled) ? (
+                            { !parseInt(isPassive) && !!parseInt(communityFeatures) && !!parseInt(sccSmootherEnabled) ? (
                                 <X.TableCell
                                     type='switch'
                                     title='Enable Slow On Curves'
@@ -724,7 +724,7 @@ class Settings extends Component {
                                     handleExpanded={ () => this.handleExpanded('sccSmootherSlowOnCurves_enabled') }
                                     handleChanged={ this.props.setSccSmootherSlowOnCurves } />
                             ) : null }
-                            { !parseInt(isPassive) && !!parseInt(communityFeatures) && !parseInt(longControlEnabled) && !!parseInt(sccSmootherEnabled) ? (
+                            { !parseInt(isPassive) && !!parseInt(communityFeatures) && !!parseInt(sccSmootherEnabled) ? (
                                 <X.TableCell
                                     type='switch'
                                     title='Sync set speed on gas pressed'
