@@ -735,7 +735,7 @@ class Settings extends Component {
                                     handleExpanded={ () => this.handleExpanded('sccSmootherSyncGasPressed_enabled') }
                                     handleChanged={ this.props.setSccSmootherSyncGasPressed } />
                             ) : null }
-                            { !parseInt(isPassive) && !!parseInt(communityFeatures) && !parseInt(longControlEnabled) && !!parseInt(sccSmootherEnabled) ? (
+                            { !parseInt(isPassive) && !!parseInt(communityFeatures) && !!parseInt(sccSmootherEnabled) ? (
                                 <X.TableCell
                                     type='switch'
                                     title='Switch only with cruise gap button'
@@ -1036,10 +1036,10 @@ const mapDispatchToProps = dispatch => ({
     },
     setLongControlEnabled: (longControlEnabled) => {
         dispatch(updateParam(Params.KEY_LONG_CONTROL_ENABLED, (longControlEnabled | 0).toString()));
-        if (longControlEnabled == 1) {
+        /*if (longControlEnabled == 1) {
           dispatch(updateParam(Params.KEY_MAD_MODE_ENABLED, (0).toString()));
           dispatch(updateParam(Params.KEY_SCC_SMOOTHER_ENABLED, (0).toString()));
-        }
+        }*/
     },
     setMadModeEnabled: (madModeEnabled) => {
         dispatch(updateParam(Params.KEY_MAD_MODE_ENABLED, (madModeEnabled | 0).toString()));
