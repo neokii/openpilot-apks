@@ -713,7 +713,8 @@ class Settings extends Component {
                                     handleExpanded={ () => this.handleExpanded('sccSmoother_enabled') }
                                     handleChanged={ this.props.setSccSmootherEnabled } />
                             ) : null }
-                            { !parseInt(isPassive) && !!parseInt(communityFeatures) && !!parseInt(sccSmootherEnabled) ? (
+                            { !parseInt(isPassive) && !!parseInt(communityFeatures)
+                                        && (!!parseInt(sccSmootherEnabled) || !!parseInt(longControlEnabled)) ? (
                                 <X.TableCell
                                     type='switch'
                                     title='Enable Slow On Curves'
@@ -724,7 +725,8 @@ class Settings extends Component {
                                     handleExpanded={ () => this.handleExpanded('sccSmootherSlowOnCurves_enabled') }
                                     handleChanged={ this.props.setSccSmootherSlowOnCurves } />
                             ) : null }
-                            { !parseInt(isPassive) && !!parseInt(communityFeatures) && !!parseInt(sccSmootherEnabled) ? (
+                            { !parseInt(isPassive) && !!parseInt(communityFeatures)
+                                        && (!!parseInt(sccSmootherEnabled) || !!parseInt(longControlEnabled)) ? (
                                 <X.TableCell
                                     type='switch'
                                     title='Sync set speed on gas pressed'
@@ -735,7 +737,8 @@ class Settings extends Component {
                                     handleExpanded={ () => this.handleExpanded('sccSmootherSyncGasPressed_enabled') }
                                     handleChanged={ this.props.setSccSmootherSyncGasPressed } />
                             ) : null }
-                            { !parseInt(isPassive) && !!parseInt(communityFeatures) && !!parseInt(sccSmootherEnabled) ? (
+                            { !parseInt(isPassive) && !!parseInt(communityFeatures)
+                                        && (!!parseInt(sccSmootherEnabled) && !parseInt(longControlEnabled)) ? (
                                 <X.TableCell
                                     type='switch'
                                     title='Switch only with cruise gap button'
@@ -1051,23 +1054,31 @@ const mapDispatchToProps = dispatch => ({
 
         if(sccSmootherEnabled == 1)
         {
-            Alert.alert(
-              "주의",
-              "SCC Smoother는 설정속도만 조절하고 최종 가감속은 순정 SCC가 담당합니다.\n이점 충분히 인지 후 사용하시기 바랍니다.\n충분히 인지하셨습니까?",
-              [
+            ChffrPlus.readParam("LongControlEnabled").then(function(value) {
+                if (parseInt(value) == 0) {
+                    Alert.alert(
+                      "주의",
+                      "SCC Smoother는 설정속도만 조절하고 최종 가감속은 순정 SCC가 담당합니다.\n이점 충분히 인지 후 사용하시기 바랍니다.\n충분히 인지하셨습니까?",
+                      [
+                        {
+                          text: "잘 모르겠습니다",
+                          onPress: () => dispatch(updateParam(Params.KEY_SCC_SMOOTHER_ENABLED, "0")),
+                          style: "cancel"
+                        },
+                        {
+                            text: "충분히 인지했습니다",
+                            onPress: () =>
+                                dispatch(updateParam(Params.KEY_SCC_SMOOTHER_ENABLED, (sccSmootherEnabled | 0).toString()))
+                        },
+                      ],
+                      { cancelable: false }
+                    );
+                }
+                else
                 {
-                  text: "잘 모르겠습니다",
-                  onPress: () => dispatch(updateParam(Params.KEY_SCC_SMOOTHER_ENABLED, "0")),
-                  style: "cancel"
-                },
-                {
-                    text: "충분히 인지했습니다",
-                    onPress: () =>
-                        dispatch(updateParam(Params.KEY_SCC_SMOOTHER_ENABLED, (sccSmootherEnabled | 0).toString()))
-                },
-              ],
-              { cancelable: false }
-            );
+                    dispatch(updateParam(Params.KEY_SCC_SMOOTHER_ENABLED, (sccSmootherEnabled | 0).toString()))
+                }
+            })
         }
         else
         {
