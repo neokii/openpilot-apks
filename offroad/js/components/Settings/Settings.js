@@ -702,6 +702,8 @@ class Settings extends Component {
                                     handleExpanded={ () => this.handleExpanded('autoLaneChange_enabled') }
                                     handleChanged={ this.props.setAutoLaneChangeEnabled } />
                             ) : null }
+                    </X.Table>
+                    <X.Table color='darkBlue'>
                             { !parseInt(isPassive) && !!parseInt(communityFeatures) ? (
                                 <X.TableCell
                                     type='switch'
@@ -749,6 +751,8 @@ class Settings extends Component {
                                     handleExpanded={ () => this.handleExpanded('sccSmootherSwitchGapOnly_enabled') }
                                     handleChanged={ this.props.setSccSmootherSwitchGapOnly } />
                             ) : null }
+                    </X.Table>
+                    <X.Table color='darkBlue'>
                         <X.TableCell
                             type='switch'
                             title='Enable SSH'
