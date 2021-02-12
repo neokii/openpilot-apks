@@ -12,8 +12,6 @@ if [ ! -d $CEREAL ]; then
   git clone https://github.com/commaai/cereal.git $CEREAL
 fi
 
-apt-get install opencl-headers
-
 pushd $CEREAL
 scons -i
 popd
