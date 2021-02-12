@@ -12,7 +12,7 @@ if [ ! -d $CEREAL ]; then
   git clone https://github.com/commaai/cereal.git $CEREAL
 fi
 
-apt-get install ocl-icd-libopencl1
+apt-get install opencl-headers
 
 pushd $CEREAL
 scons -i
