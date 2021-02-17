@@ -40,9 +40,7 @@ import ai.comma.openpilot.cereal.Log.UiLayoutState
  * Created by batman on 11/2/17.
  */
 class ChffrPlusModule(val ctx: ReactApplicationContext) :
-        ReactContextBaseJavaModule(ctx),
-        NavDestinationPollerDelegate,
-        ThermalPollerDelegate {
+        ReactContextBaseJavaModule(ctx) {
     val WIFI_STATE_EVENT_NAME = "WIFI_STATE_CHANGED"
     val SIM_STATE_EVENT_NAME = "SIM_STATE_CHANGED"
     enum class ActivityRequestCode(val code: Int) {
@@ -53,7 +51,6 @@ class ChffrPlusModule(val ctx: ReactApplicationContext) :
         DATE_SETTINGS(4)
     }
     private var networkMonitor: NetworkMonitor? = null
-    private var thermalPoller: ThermalPoller? = null
 
     override fun getName(): String = "ChffrPlus"
 
@@ -65,15 +62,11 @@ class ChffrPlusModule(val ctx: ReactApplicationContext) :
         filter.addAction("android.intent.action.SIM_STATE_CHANGED")
         filter.addAction(ConnectivityManager.CONNECTIVITY_ACTION)
         ctx.registerReceiver(networkMonitor, filter)
-
-        thermalPoller = ThermalPoller(this)
-        thermalPoller!!.start()
     }
 
     override fun onCatalystInstanceDestroy() {
         super.onCatalystInstanceDestroy()
         ctx.unregisterReceiver(networkMonitor)
-        thermalPoller!!.stop()
     }
 
 
