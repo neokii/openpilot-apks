@@ -41,7 +41,6 @@ import ai.comma.openpilot.cereal.Log.UiLayoutState
  */
 class ChffrPlusModule(val ctx: ReactApplicationContext) :
         ReactContextBaseJavaModule(ctx),
-        NavDestinationPollerDelegate,
         ThermalPollerDelegate {
     val WIFI_STATE_EVENT_NAME = "WIFI_STATE_CHANGED"
     val SIM_STATE_EVENT_NAME = "SIM_STATE_CHANGED"
@@ -81,11 +80,6 @@ class ChffrPlusModule(val ctx: ReactApplicationContext) :
     override fun onThermalDataChanged(thermalSample: ThermalSample) {
         ctx.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
                 .emit("onThermalDataChanged", thermalSample.toWritableMap())
-    }
-
-    override fun onDestinationReceived(destination: Destination) {
-        ctx.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
-                .emit("onDestinationChanged", destination.toWritableMap())
     }
 
     private fun startActivityWithIntent(intent: Intent, code: Int) {
