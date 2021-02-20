@@ -241,18 +241,9 @@ class ChffrPlusModule(val ctx: ReactApplicationContext) :
     }
 
     @ReactMethod
-    fun openApp(componentName) {
+    fun runSu(cmd: String) {
         try {
-            Runtime.getRuntime().exec(arrayOf("/system/bin/su", "-c", "am start -n " + componentName))
-        } catch (e: IOException) {
-            CloudLog.exception("BaseUIReactModule.shutdown", e)
-        }
-    }
-
-    @ReactMethod
-    fun runSu(cmd) {
-        try {
-            Runtime.getRuntime().exec(arrayOf("/system/bin/su", "-c", cmd)
+            Runtime.getRuntime().exec(arrayOf("/system/bin/su", "-c", cmd))
         } catch (e: IOException) {
         }
     }
