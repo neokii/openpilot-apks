@@ -752,6 +752,22 @@ class Settings extends Component {
                                     handleChanged={ this.props.setSccSmootherSwitchGapOnly } />
                             ) : null }
                     </X.Table>
+                    <X.Table color='darkBlue' padding='big'>
+                        <X.Button
+                            color='settingsDefault'
+                            size='small'
+                            onPress={ this.props.openNavdySettings }>
+                            { `Open Navdy Settings` }
+                        </X.Button>
+                    </X.Table>
+                    <X.Table color='darkBlue' padding='big'>
+                        <X.Button
+                            color='settingsDefault'
+                            size='small'
+                            onPress={ this.props.openSystemSettings }>
+                            { `Open System Settings` }
+                        </X.Button>
+                    </X.Table>
                     <X.Table color='darkBlue'>
                         <X.TableCell
                             type='switch'
@@ -986,6 +1002,12 @@ const mapDispatchToProps = dispatch => ({
             { text: 'Cancel', onPress: () => {}, style: 'cancel' },
             { text: 'Uninstall', onPress: () => ChffrPlus.writeParam(Params.KEY_DO_UNINSTALL, "1") },
         ]);
+    },
+    openSystemSettings: () => {
+        ChffrPlus.runSu('am start -a android.settings.SETTINGS')
+    },
+    openNavdySettings: () => {
+        ChffrPlus.runSu('am start -n com.neokii.openpilot/.MainActivity')
     },
     openTrainingGuide: () => {
         dispatch(NavigationActions.reset({
