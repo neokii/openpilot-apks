@@ -760,14 +760,6 @@ class Settings extends Component {
                             { `Open Navdy Settings` }
                         </X.Button>
                     </X.Table>
-                    <X.Table color='darkBlue' padding='big'>
-                        <X.Button
-                            color='settingsDefault'
-                            size='small'
-                            onPress={ this.props.openSystemSettings }>
-                            { `Open System Settings` }
-                        </X.Button>
-                    </X.Table>
                     <X.Table color='darkBlue'>
                         <X.TableCell
                             type='switch'
