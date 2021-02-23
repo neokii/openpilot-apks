@@ -637,7 +637,8 @@ class Settings extends Component {
                 SccSmootherEnabled: sccSmootherEnabled,
                 SccSmootherSlowOnCurves: sccSmootherSlowOnCurves,
                 SccSmootherSyncGasPressed: sccSmootherSyncGasPressed,
-                SccSmootherSwitchGapOnly: sccSmootherSwitchGapOnly
+                SccSmootherSwitchGapOnly: sccSmootherSwitchGapOnly,
+                ShowDebugUI: showDebugUI
             },
         } = this.props;
         const { expandedCell } = this.state;
