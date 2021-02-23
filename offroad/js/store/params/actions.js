@@ -52,7 +52,8 @@ const PARAMS = [
   "SccSmootherEnabled",
   "SccSmootherSlowOnCurves",
   "SccSmootherSyncGasPressed",
-  "SccSmootherSwitchGapOnly"
+  "SccSmootherSwitchGapOnly",
+  "ShowDebugUI"
 ].concat(ALERT_PARAMS);
 
 export function refreshParams(params) {
