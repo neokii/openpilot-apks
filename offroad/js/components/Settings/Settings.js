@@ -753,6 +753,16 @@ class Settings extends Component {
                             ) : null }
                     </X.Table>
                     <X.Table color='darkBlue' padding='big'>
+                            { !parseInt(isPassive) && !!parseInt(communityFeatures) ? (
+                                <X.TableCell
+                                    type='switch'
+                                    title='Show Debug UI'
+                                    value={ !!parseInt(showDebugUI) }
+                                    iconSource={ Icons.openpilot }
+                                    handleChanged={ this.props.setShowDebugUI } />
+                            ) : null }
+                    </X.Table>
+                    <X.Table color='darkBlue' padding='big'>
                         <X.Button
                             color='settingsDefault'
                             size='small'
@@ -1111,6 +1121,9 @@ const mapDispatchToProps = dispatch => ({
     },
     setSccSmootherSwitchGapOnly: (sccSmootherSwitchGapOnly) => {
         dispatch(updateParam(Params.KEY_SCC_SMOOTHER_SWITCH_GAP_ONLY, (sccSmootherSwitchGapOnly | 0).toString()));
+    },
+    setShowDebugUI: (showDebugUI) => {
+        dispatch(updateParam(Params.KEY_SHOW_DEBUG_UI, (showDebugUI | 0).toString()));
     },
     deleteParam: (param) => {
         dispatch(deleteParam(param));
