@@ -753,7 +753,7 @@ class Settings extends Component {
                                     handleChanged={ this.props.setSccSmootherSwitchGapOnly } />
                             ) : null }
                     </X.Table>
-                    <X.Table color='darkBlue' padding='big'>
+                    <X.Table color='darkBlue'>
                             { !parseInt(isPassive) && !!parseInt(communityFeatures) ? (
                                 <X.TableCell
                                     type='switch'
